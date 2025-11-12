@@ -17,15 +17,16 @@ Here's some example codes:
 String record = "000321PRODUCT DESCRIPTION                     2025-11-125.23";
 FixedLengthRecordReader reader = new FixedLengthRecordReader( record );
 
-// Read an int value using first 6 characters (e.g. a KPI)
+// Read the KPI as an int value using first 6 characters (expected: 321)
 int id = reader.getInt( 6 );
 
-// Read a String value using the next 40 characters (e.g. description)
-String description = reader.getString( 40 );
+// Read the product description as a String value using the next 40
+// characters (expected: "PRODUCT DESCRIPTION")
+String description = reader.getString( 40 ).trim();
 
-// Read a LocalDate (e.g. purchase date)
+// Read the purchase date as a LocalDate (expected: 2025-11-12)
 LocalDate purchaseDate = reader.getExtendedISODate();
 
-// Read a double value (e.g. the price)
+// Read the price as a double value (expected: 5.23)
 double price = reader.getDouble(4);
 ```
